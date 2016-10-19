@@ -1,0 +1,28 @@
+{% if error %}
+    <div style="color:red;font-size:30px">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<div class="container">
+
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <h2 class="form-signin-heading">Log In</h2>
+
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" class="form-control" placeholder="Username" name="_username" value="{{ last_username }}" required="required" autofocus />
+
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Password" name="_password" required="required" />
+
+
+        <input style="float:left;margin-right:10px" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label class="checkbox" for="remember_me">{{ '  Meine Daten merken'|trans }}</label>
+
+        <input class="btn btn-lg btn-success btn-block" type="submit" id="_submit" name="_submit" value="{{ 'Anmelden'|trans }}" />
+
+    </form>
+
+</div> <!-- /container -->
